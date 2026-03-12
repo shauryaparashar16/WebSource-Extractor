@@ -9,7 +9,7 @@ Built with **Python (Flask) for the backend** and **Vanilla JavaScript for the f
 ## Application Preview
 
 <p align="center">
-  <img src="frontend/screenshot.png" width="900">
+  <img src="website-source-extractor/frontend/screenshot.png" width="900">
 </p>
 ## Features
 
