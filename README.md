@@ -6,7 +6,11 @@ The application analyzes the webpage and allows users to **view and download HTM
 Built with **Python (Flask) for the backend** and **Vanilla JavaScript for the frontend**, this project demonstrates web scraping, API development, and full-stack integration.
 
 ---
+## Application Preview
 
+<p align="center">
+  <img src="frontend/screenshot.png" width="900">
+</p>
 ## Features
 
 * Extract **HTML source code** from any reachable website
