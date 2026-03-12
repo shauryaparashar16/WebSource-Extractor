@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Source Code Extractor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🔍</span>
+                    <h1>Website Source Code Extractor</h1>
+                </div>
+                <p class="subtitle">Extract and download complete frontend code from any website</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- URL Input Section -->
+            <section class="input-section">
+                <div class="input-card">
+                    <h2>Extract Source Code</h2>
+                    <p>Enter a website URL to analyze and extract its frontend source code</p>
+                    
+                    <form class="url-form" id="urlForm">
+                        <div class="form-group">
+                            <label for="urlInput" class="form-label">Website URL</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="url" 
+                                    id="urlInput" 
+                                    class="form-control url-input" 
+                                    placeholder="https://example.com"
+                                    required
+                                >
+                                <button type="submit" class="btn btn-primary extract-btn">
+                                    <span class="btn-text">Extract Code</span>
+                                    <span class="btn-icon">→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Loading Indicator -->
+                    <div id="loadingIndicator" class="loading-indicator">
+                        <div class="spinner"></div>
+                        <span>Extracting source code...</span>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="error-message"></div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection">
+                <!-- Analysis Overview -->
+                <div class="analysis-card" id="analysisCard">
+                    <div class="analysis-header">
+                        <h3>📊 Analysis Overview</h3>
+                        <button id="downloadZipBtn" class="btn btn-success download-btn">
+                            <span class="btn-text">📥 Download ZIP</span>
+                        </button>
+                    </div>
+                    <div class="analysis-grid" id="analysisGrid">
+                        <!-- Analysis data will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Tabbed Content -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="html">HTML Source</button>
+                        <button class="tab-btn" data-tab="css">CSS Files</button>
+                        <button class="tab-btn" data-tab="javascript">JavaScript</button>
+                        <button class="tab-btn" data-tab="assets">Assets</button>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- HTML Tab -->
+                        <div class="tab-panel active" id="htmlTab">
+                            <div class="code-header">
+                                <h3>HTML Source Code</h3>
+                                <button class="copy-btn" onclick="copyToClipboard('htmlResult')">Copy</button>
+                            </div>
+                            <pre class="code-block" id="htmlResult"></pre>
+                        </div>
+
+                        <!-- CSS Tab -->
+                        <div class="tab-panel" id="cssTab">
+                            <div class="code-header">
+                                <h3>CSS Files</h3>
+                                <span class="file-count" id="cssCount">0 files</span>
+                            </div>
+                            <div class="file-list" id="cssResult"></div>
+                        </div>
+
+                        <!-- JavaScript Tab -->
+                        <div class="tab-panel" id="javascriptTab">
+                            <div class="code-header">
+                                <h3>JavaScript Files</h3>
+                                <span class="file-count" id="jsCount">0 files</span>
+                            </div>
+                            <div class="file-list" id="jsResult"></div>
+                        </div>
+
+                        <!-- Assets Tab -->
+                        <div class="tab-panel" id="assetsTab">
+                            <div class="code-header">
+                                <h3>Assets & Resources</h3>
+                                <span class="file-count" id="assetsCount">0 files</span>
+                            </div>
+                            <div class="file-list" id="assetsResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📥 Preparing Download</h3>
+            </div>
+            <div class="modal-body">
+                <div class="download-progress">
+                    <div class="progress-spinner"></div>
+                    <p>Creating ZIP file with all website assets...</p>
+                    <small>This may take a few moments depending on the website size</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Website Source Code Extractor - Made for learning purposes by Shaurya Parashar</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
